@@ -18,19 +18,19 @@ class XSettingListLayout extends Table
     {
         return  [
 
-			TD::set('key','Key')
+			TD::make('key','Key')
                 ->sort()
                 ->filter('text')
                 ->Render(function ($data) {
                     return Link::make($data->key)
                         ->route('platform.xsetting.edit', $data->key);
                 }),
-			TD::set('options.title', 'Name')
+			TD::make('options.title', 'Name')
 				->render(function ($xsetting) {
                     return $xsetting->options['title'];
 				})
                 ->sort(),
-            TD::set('value','Value')
+            TD::make('value','Value')
                 ->render(function ($xsetting) {
                      if (is_array($xsetting->value)) {
                         return \Str::limit(htmlspecialchars(json_encode($xsetting->value)), 50);
